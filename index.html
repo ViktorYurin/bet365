@@ -28,7 +28,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 60px; /* Высота верхнего меню */
+            height: 60px;
             background-color: #000;
             z-index: 1000;
             display: flex;
@@ -37,9 +37,10 @@
         }
         
         .top-menu img {
-            width: 100%; /* На всю ширину меню */
-            height: 100%; /* На всю высоту меню */
-            object-fit: cover; /* Заполняет всю область без искажений */
+            width: 100%;
+            height: auto; /* Сохраняем пропорции */
+            max-height: 100%; /* Не больше высоты меню */
+            object-fit: contain; /* Сохраняем пропорции без обрезки */
         }
         
         /* Нижнее фиксированное меню */
@@ -48,7 +49,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 80px; /* Высота нижнего меню */
+            height: 80px;
             background-color: #000;
             z-index: 1000;
             display: flex;
@@ -57,16 +58,17 @@
         }
         
         .bottom-menu img {
-            width: 100%; /* На всю ширину меню */
-            height: 100%; /* На всю высоту меню */
-            object-fit: cover; /* Заполняет всю область без искажений */
+            width: 100%;
+            height: auto; /* Сохраняем пропорции */
+            max-height: 100%; /* Не больше высоты меню */
+            object-fit: contain; /* Сохраняем пропорции без обрезки */
         }
         
         /* Основная область прокрутки */
         .content {
             position: absolute;
-            top: 60px; /* Отступ под верхнее меню */
-            bottom: 80px; /* Отступ над нижним меню */
+            top: 60px;
+            bottom: 80px;
             left: 0;
             width: 100%;
             overflow-y: auto;
