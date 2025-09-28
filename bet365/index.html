@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bet365</title>
+    
+    <!-- Иконки для ярлыка -->
+    <link rel="icon" type="image/png" href="Ava.jpg">
+    <link rel="apple-touch-icon" href="Ava.jpg">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="Ava.jpg">
+    <meta name="theme-color" content="#222222">
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #222;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Верхнее фиксированное меню */
+        .top-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px; /* Высота верхнего меню */
+            background-color: #000;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .top-menu img {
+            height: 40px;
+            width: auto;
+            max-width: 100%;
+        }
+        
+        /* Нижнее фиксированное меню */
+        .bottom-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px; /* Высота нижнего меню */
+            background-color: #000;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .bottom-menu img {
+            height: 50px;
+            width: auto;
+            max-width: 100%;
+        }
+        
+        /* Основная область прокрутки */
+        .content {
+            position: absolute;
+            top: 60px; /* Отступ под верхнее меню */
+            bottom: 80px; /* Отступ над нижним меню */
+            left: 0;
+            width: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        /* Основное изображение */
+        .main-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Верхнее фиксированное меню -->
+    <div class="top-menu">
+        <img src="up.jpg" alt="Верхнее меню">
+    </div>
+    
+    <!-- Основной контент с прокруткой -->
+    <div class="content">
+        <img src="Untitled.jpg" alt="Основное изображение" class="main-image">
+    </div>
+    
+    <!-- Нижнее фиксированное меню -->
+    <div class="bottom-menu">
+        <img src="down.jpg" alt="Нижнее меню">
+    </div>
+</body>
+</html>
