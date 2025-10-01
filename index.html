@@ -13,6 +13,13 @@
     <meta name="theme-color" content="#222222">
     
     <style>
+        /* Сброс отступов по умолчанию */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body, html {
             margin: 0;
             padding: 0;
@@ -28,19 +35,16 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 60px;
-            background-color: #000;
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #000;
         }
         
         .top-menu img {
             width: 100%;
-            height: auto; /* Сохраняем пропорции */
-            max-height: 100%; /* Не больше высоты меню */
-            object-fit: contain; /* Сохраняем пропорции без обрезки */
+            height: auto;
+            display: block;
+            /* Убираем возможные отступы у изображения */
+            vertical-align: top;
         }
         
         /* Нижнее фиксированное меню */
@@ -49,26 +53,23 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 80px;
-            background-color: #000;
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #000;
         }
         
         .bottom-menu img {
             width: 100%;
-            height: auto; /* Сохраняем пропорции */
-            max-height: 100%; /* Не больше высоты меню */
-            object-fit: contain; /* Сохраняем пропорции без обрезки */
+            height: auto;
+            display: block;
+            /* Убираем возможные отступы у изображения */
+            vertical-align: top;
         }
         
         /* Основная область прокрутки */
         .content {
             position: absolute;
-            top: 60px;
-            bottom: 80px;
+            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
             overflow-y: auto;
@@ -80,6 +81,8 @@
             width: 100%;
             height: auto;
             display: block;
+            /* Убираем возможные отступы у изображения */
+            vertical-align: top;
         }
     </style>
 </head>
@@ -91,6 +94,7 @@
     
     <!-- Основной контент с прокруткой -->
     <div class="content">
+        <!-- Отступы будут установлены скриптом -->
         <img src="Untitled.jpg" alt="Основное изображение" class="main-image">
     </div>
     
@@ -98,5 +102,47 @@
     <div class="bottom-menu">
         <img src="down.jpg" alt="Нижнее меню">
     </div>
+
+    <script>
+        // Автоматически рассчитываем отступы для контента
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateContentMargins() {
+                const topMenu = document.querySelector('.top-menu');
+                const bottomMenu = document.querySelector('.bottom-menu');
+                const content = document.querySelector('.content');
+                
+                const topHeight = topMenu.offsetHeight;
+                const bottomHeight = bottomMenu.offsetHeight;
+                
+                content.style.top = topHeight + 'px';
+                content.style.bottom = bottomHeight + 'px';
+            }
+            
+            // Обновляем отступы после загрузки изображений
+            const images = document.querySelectorAll('.top-menu img, .bottom-menu img');
+            let loadedImages = 0;
+            
+            images.forEach(img => {
+                if (img.complete) {
+                    loadedImages++;
+                } else {
+                    img.addEventListener('load', function() {
+                        loadedImages++;
+                        if (loadedImages === images.length) {
+                            updateContentMargins();
+                        }
+                    });
+                }
+            });
+            
+            // Если все изображения уже загружены
+            if (loadedImages === images.length) {
+                updateContentMargins();
+            }
+            
+            // Также обновляем при изменении размера окна
+            window.addEventListener('resize', updateContentMargins);
+        });
+    </script>
 </body>
 </html>
