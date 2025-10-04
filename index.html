@@ -47,24 +47,6 @@
             vertical-align: top;
         }
         
-        /* Нижнее фиксированное меню */
-        .bottom-menu {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: #000;
-        }
-        
-        .bottom-menu img {
-            width: 100%;
-            height: auto;
-            display: block;
-            /* Убираем возможные отступы у изображения */
-            vertical-align: top;
-        }
-        
         /* Основная область прокрутки */
         .content {
             position: absolute;
@@ -97,29 +79,22 @@
         <!-- Отступы будут установлены скриптом -->
         <img src="Untitled.jpg" alt="Основное изображение" class="main-image">
     </div>
-    
-    <!-- Нижнее фиксированное меню -->
-    <div class="bottom-menu">
-        <img src="down.jpg" alt="Нижнее меню">
-    </div>
 
     <script>
         // Автоматически рассчитываем отступы для контента
         document.addEventListener('DOMContentLoaded', function() {
             function updateContentMargins() {
                 const topMenu = document.querySelector('.top-menu');
-                const bottomMenu = document.querySelector('.bottom-menu');
                 const content = document.querySelector('.content');
                 
                 const topHeight = topMenu.offsetHeight;
-                const bottomHeight = bottomMenu.offsetHeight;
                 
                 content.style.top = topHeight + 'px';
-                content.style.bottom = bottomHeight + 'px';
+                content.style.bottom = '0';
             }
             
             // Обновляем отступы после загрузки изображений
-            const images = document.querySelectorAll('.top-menu img, .bottom-menu img');
+            const images = document.querySelectorAll('.top-menu img');
             let loadedImages = 0;
             
             images.forEach(img => {
